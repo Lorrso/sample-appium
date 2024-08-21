@@ -1,4 +1,4 @@
 #Скриншоты ошибки
 
-![Скриншот1](https://github.com/user-attachments/assets/3db55326-dfc1-4cd1-a388-e37448f3f688)
-![Скриншот2](https://github.com/user-attachments/assets/2d4a4b94-5fd5-4dc7-a8c7-5ee237513554)
+![Скриншот1](https://github.com/user-attachments/assets/3f8c3f5d-b76a-4286-81aa-d2c746c641ce)
+![Скриншот2](https://github.com/user-attachments/assets/0a9010e2-659b-4f62-876d-98b9bfce3c0f)
