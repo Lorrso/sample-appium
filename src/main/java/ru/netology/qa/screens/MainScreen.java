@@ -10,19 +10,19 @@ import java.time.Duration;
 
 public class MainScreen {
 
-    @AndroidFindBy(id = "userInput")
+    @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/userInput")
     public MobileElement userInput;
 
-    @AndroidFindBy(id = "buttonChange")
+    @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/buttonChange")
     public MobileElement buttonChange;
 
-    @AndroidFindBy(id = "buttonActivity")
+    @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/buttonActivity")
     public MobileElement buttonActivity;
 
-    @AndroidFindBy(id = "textToBeChanged")
+    @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/textToBeChanged")
     public MobileElement textToBeChanged;
 
-    @AndroidFindBy(id = "text")
+    @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/text")
     public MobileElement newActivityText;
 
     private AppiumDriver driver;
