@@ -44,7 +44,6 @@ public class SampleTest {
 
     @Test
     public void testChangeToNullText() {
-        MainScreen mainScreen = new MainScreen(driver);
         var textToSet = "    ";
 
         String textView = mainScreen.textToBeChanged.getText();
@@ -57,7 +56,6 @@ public class SampleTest {
 
     @Test
     public void testViewTextInNewActivity() {
-        MainScreen mainScreen = new MainScreen(driver);
         String textToSet = "Netology";
 
         mainScreen.userInput.sendKeys(textToSet);
