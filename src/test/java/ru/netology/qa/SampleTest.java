@@ -3,8 +3,7 @@ package ru.netology.qa;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import io.appium.java_client.AppiumDriver;
-import ru.netology.qa.screens.MainScreen;
+import io.appium.java_client.android.AndroidDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,13 +12,13 @@ import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIV
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
 import static io.appium.java_client.remote.MobileCapabilityType.*;
 import static org.junit.jupiter.api.TestInstance.Lifecycle;
+import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class SampleTest {
 
-    private AppiumDriver driver;
-    MainScreen mainScreen;
+    AndroidDriver driver;
 
     private URL getUrl() {
         try {
@@ -38,31 +37,42 @@ public class SampleTest {
         desiredCapabilities.setCapability(APP_ACTIVITY, "ru.netology.testing.uiautomator.MainActivity");
         desiredCapabilities.setCapability(AUTOMATION_NAME, "uiautomator2");
 
-        driver = new AppiumDriver(this.getUrl(), desiredCapabilities);
-        mainScreen = new MainScreen(driver);
+        driver = new AndroidDriver(this.getUrl(), desiredCapabilities);
     }
 
     @Test
     public void testChangeToNullText() {
-        var textToSet = "    ";
+        var textView = driver.findElement(id("ru.netology.testing.uiautomator:id/textToBeChanged"));
+        var userInput = driver.findElement(id("ru.netology.testing.uiautomator:id/userInput"));
+        var buttonChange = driver.findElement(id("ru.netology.testing.uiautomator:id/buttonChange"));
+        String textToSet = "    ";
 
-        String textView = mainScreen.textToBeChanged.getText();
-        mainScreen.userInput.sendKeys(textToSet);
-        mainScreen.buttonChange.click();
+        textView.isDisplayed();
+        String startingText = textView.getText();
+        userInput.isDisplayed();
+        userInput.sendKeys(textToSet);
+        buttonChange.isDisplayed();
+        buttonChange.click();
 
-        String result = mainScreen.textToBeChanged.getText();
-        Assertions.assertEquals(result, textView);
+        String result = textView.getText();
+        Assertions.assertEquals(result, startingText);
     }
 
     @Test
     public void testViewTextInNewActivity() {
+        var userInput = driver.findElement(id("ru.netology.testing.uiautomator:id/userInput"));
+        var buttonChange = driver.findElement(id("ru.netology.testing.uiautomator:id/buttonChange"));
+        var buttonActivity = driver.findElement(id("ru.netology.testing.uiautomator:id/buttonActivity"));
         String textToSet = "Netology";
 
-        mainScreen.userInput.sendKeys(textToSet);
-        mainScreen.buttonChange.click();
-        mainScreen.buttonActivity.click();
+        userInput.isDisplayed();
+        userInput.sendKeys(textToSet);
+        buttonChange.isDisplayed();
+        buttonChange.click();
+        buttonActivity.isDisplayed();
+        buttonActivity.click();
 
-        var result = mainScreen.newActivityText.getText();
+        String result = driver.findElement(id("ru.netology.testing.uiautomator:id/text")).getText();
         Assertions.assertEquals(result, textToSet);
     }
 
